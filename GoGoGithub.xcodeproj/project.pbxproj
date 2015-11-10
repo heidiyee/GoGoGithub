@@ -13,6 +13,7 @@
 		B785343E1BF125B000F533AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B785343D1BF125B000F533AC /* Assets.xcassets */; };
 		B78534411BF125B000F533AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B785343F1BF125B000F533AC /* LaunchScreen.storyboard */; };
 		B78534491BF1285700F533AC /* OAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78534481BF1285700F533AC /* OAuthClient.swift */; };
+		B785344B1BF19A7D00F533AC /* tokenFromJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = B785344A1BF19A7D00F533AC /* tokenFromJSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		B78534401BF125B000F533AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B78534421BF125B000F533AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B78534481BF1285700F533AC /* OAuthClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthClient.swift; sourceTree = "<group>"; };
+		B785344A1BF19A7D00F533AC /* tokenFromJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tokenFromJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				B78534361BF125B000F533AC /* AppDelegate.swift */,
 				B78534381BF125B000F533AC /* ViewController.swift */,
 				B78534481BF1285700F533AC /* OAuthClient.swift */,
+				B785344A1BF19A7D00F533AC /* tokenFromJSON.swift */,
 				B785343A1BF125B000F533AC /* Main.storyboard */,
 				B785343D1BF125B000F533AC /* Assets.xcassets */,
 				B785343F1BF125B000F533AC /* LaunchScreen.storyboard */,
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B78534491BF1285700F533AC /* OAuthClient.swift in Sources */,
+				B785344B1BF19A7D00F533AC /* tokenFromJSON.swift in Sources */,
 				B78534391BF125B000F533AC /* ViewController.swift in Sources */,
 				B78534371BF125B000F533AC /* AppDelegate.swift in Sources */,
 			);
@@ -292,6 +296,7 @@
 				B78534471BF125B000F533AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

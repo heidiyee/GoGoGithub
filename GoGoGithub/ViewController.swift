@@ -23,6 +23,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func loginButtonPressed(sender: UIButton) {
+        OAuthClient.shared.requestGithubAccess(["scope" : "user, user:email"])
     }
 
 }
