@@ -12,7 +12,7 @@ let kClientId = "client_id=d325e72fb3250a427806"
 let kClientSecret = "client_secret=98c8c84c3c978c39977a5fc877e5ff0a2365de16"
 let kOAuthAuthorize = "https://github.com/login/oauth/authorize"
 let kOAuthTokenAccess = "https://github.com/login/oauth/access_token"
-let kAccessTokenKey = "accessTokenKey"
+let kAccessTokenKey = "blah"
 
 
 class OAuthClient {
@@ -38,9 +38,6 @@ class OAuthClient {
         print(code)
         
         guard let exchangeURL = NSURL(string: "\(kOAuthTokenAccess)?\(kClientId)&\(kClientSecret)&code=\(code)") else {return}
-        
-        print(exchangeURL)
-        
         let requestToken = NSMutableURLRequest(URL: exchangeURL)
         requestToken.HTTPMethod = "POST"
         requestToken.setValue("application/json", forHTTPHeaderField: "Accept")
@@ -54,7 +51,9 @@ class OAuthClient {
                         print(rootObject)
                         if let accessToken = rootObject["access_token"] as? String {
                             NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                                self.saveAccessTokenToUserDefaults(accessToken)
+                                let defaults = NSUserDefaults.standardUserDefaults()
+                                defaults.setObject(accessToken, forKey: kAccessTokenKey)
+                                
                             })
                             print(kAccessTokenKey)
                         }
@@ -66,7 +65,7 @@ class OAuthClient {
                 }
             }
             if let response = response {
-                print("response")
+                print(":)")
             }
         }.resume()
         
@@ -80,11 +79,14 @@ class OAuthClient {
         
     }
     
-    func saveAccessTokenToUserDefaults(accessToken: String) -> Bool {
-        NSUserDefaults.standardUserDefaults().setObject(accessToken, forKey: kAccessTokenKey)
-        return NSUserDefaults.standardUserDefaults().synchronize()
+    func accessToken() -> String {
+        
+        guard let accessToken = NSUserDefaults.standardUserDefaults().stringForKey(kAccessTokenKey) else {return "not workign"}
+        return accessToken
+        
     }
     
     
     
+
 }

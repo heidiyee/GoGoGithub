@@ -26,5 +26,10 @@ class ViewController: UIViewController {
         OAuthClient.shared.requestGithubAccess(["scope" : "user, user:email"])
     }
 
+    @IBAction func printToken(sender: UIButton) {
+        let token = OAuthClient.shared.accessToken()
+        print(token)
+
+    }
 }
 
