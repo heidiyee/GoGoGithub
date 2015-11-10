@@ -31,5 +31,12 @@ class ViewController: UIViewController {
         print(token)
 
     }
+    @IBAction func getRepos(sender: UIButton) {
+        GithubService.getReposWithSearch { (data) -> Void in
+            if let data = data {
+                print(data)
+            }
+        }
+    }
 }
 

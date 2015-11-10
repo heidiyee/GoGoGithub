@@ -31,11 +31,20 @@
                                     <action selector="printToken:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XqY-Vb-GOe"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Re1-P3-pmn">
+                                <rect key="frame" x="277" y="425" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="getRepos:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8DR-VJ-jB7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="c6y-ic-JoK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="T20-BG-f4b"/>
+                            <constraint firstItem="Re1-P3-pmn" firstAttribute="top" secondItem="sO1-HP-kz5" secondAttribute="bottom" constant="30" id="V74-nB-Qfq"/>
                             <constraint firstItem="c6y-ic-JoK" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Ve8-0C-mrw"/>
+                            <constraint firstItem="Re1-P3-pmn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cuI-mI-a52"/>
                             <constraint firstItem="sO1-HP-kz5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="e24-Xy-6TA"/>
                             <constraint firstItem="sO1-HP-kz5" firstAttribute="top" secondItem="c6y-ic-JoK" secondAttribute="bottom" constant="50" id="sF4-fv-58w"/>
                         </constraints>

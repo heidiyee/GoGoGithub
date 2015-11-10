@@ -47,7 +47,7 @@ class OAuthClient {
             }
             if let data = data {
                 do {
-                    if let rootObject = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as? [String: AnyObject] {
+                    if let rootObject = try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String: AnyObject] {
                         print(rootObject)
                         if let accessToken = rootObject["access_token"] as? String {
                             NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
