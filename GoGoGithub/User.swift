@@ -11,8 +11,14 @@ import Foundation
 class User {
     
     var name: String?
+    var repoURL: String?
+    var id: Int?
+    var login: String?
     
-    init(name: String?) {
+    init(name: String?, repoURL: String?, id: Int?, login: String?) {
         self.name = name
+        self.repoURL = repoURL
+        self.id = id
+        self.login = login
     }
 }

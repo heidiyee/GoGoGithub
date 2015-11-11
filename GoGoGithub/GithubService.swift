@@ -36,7 +36,7 @@ class GithubService {
 
     }
     
-    class func getUser(completion: (user: String) -> ())  {
+    class func getUser(completion: (user: User) -> ())  {
         
         if let token = OAuthClient.shared.accessToken() {
             print(token)
@@ -51,18 +51,13 @@ class GithubService {
                     print(error)
                 }
                 if let data = data {
-                    do {
-                        if let rootObject = try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String: AnyObject] {
-                            print(rootObject)
-                            if let user = rootObject["login"] as? String {
-                                completion(user: user)
-                            }
-                        }
-                    }catch _ {}
-
+                    if let user = User.getUser(data) {
+                        completion(user: user)
+                    }
+        
                 }
-                if let response = response {
-                    print(response)
+                if let _ = response {
+                    //print(response)
                 }
             }.resume()
         }

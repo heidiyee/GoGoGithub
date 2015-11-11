@@ -10,7 +10,7 @@ import UIKit
 
 class AfterLoginViewController: UIViewController {
     
-    var user: String?
+    var user: User?
     var array = [Repository]()
     
     
@@ -21,7 +21,7 @@ class AfterLoginViewController: UIViewController {
     @IBAction func getReposWithSearchOption(sender: UIButton) {
         GithubService.getUser { (user) -> () in
             self.user = user
-            print(self.user)
+            print(self.user?.name)
         }
     }
     

@@ -30,9 +30,7 @@ extension Repository {
             
             
         } catch _ {}
-
-        
-        return repoArray
+        return nil
     }
 }
 
@@ -46,4 +44,20 @@ extension Owner {
         return nil
     }
     
+}
+
+extension User {
+    
+    class func getUser(data: NSData) -> User? {
+        
+        do {
+            if let rootObject = try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String: AnyObject] {
+                if let login = rootObject["login"] as? String, name = rootObject["name"] as? String, repoUrl = rootObject["repos_url"] as? String, id = rootObject["id"] as? Int {
+                    return User(name: name, repoURL: repoUrl, id: id, login: login)
+                }
+                    
+            }
+        }catch _ {}
+        return nil
+    }
 }
