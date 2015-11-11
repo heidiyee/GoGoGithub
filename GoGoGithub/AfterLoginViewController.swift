@@ -11,6 +11,9 @@ import UIKit
 class AfterLoginViewController: UIViewController {
     
     var user: String?
+    var array = [Repository]()
+    
+    
     class func identifier() -> String {
         return "AfterLoginViewController"
     }
@@ -23,8 +26,15 @@ class AfterLoginViewController: UIViewController {
     }
     
     @IBAction func postRepo(sender: UIButton) {
-        
         GithubService.postRepo("blah")
     }
+    
+    @IBAction func searchRepo(sender: UIButton) {
+        GithubService.getRepos { (repositoryArray) -> Void in
+            self.array = repositoryArray
+            print(self.array)
+        }
+    }
+    
     
 }

@@ -12,7 +12,7 @@ import UIKit
 class GithubService {
     
     
-    class func getReposWithSearch(completion: (data: NSData?) -> Void) {
+    class func getReposWithSearch(completion: (json: NSData) -> Void) {
         
         //https://api.github.com/search/repositories?q=tetris+language:assembly&sort=stars&order=desc
 
@@ -26,16 +26,10 @@ class GithubService {
                 print(error)
             }
             if let data = data {
-                print(data)
-                do {
-                    if let rootObject = try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String: AnyObject] {
-                        print(rootObject)
-                    }
-                } catch _ {}
-
+                completion(json: data)
             }
-            if let response = response {
-                print(response)
+            if let _ = response {
+                //print(response)
             }
         }.resume()
         
@@ -108,6 +102,30 @@ class GithubService {
             }
         }catch _ {}
             
+    }
+    
+    class func getRepos(completion: (repositoryArray: [Repository]) -> Void) {
+        
+        guard let baseURL = NSURL(string: "https://api.github.com/repositories?") else {return}
+        let request = NSMutableURLRequest(URL: baseURL)
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        
+        
+        NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) -> Void in
+            if let error = error {
+                print(error)
+            }
+            if let data = data {
+                if let repoArray = Repository.parseJSONToRepository(data) {
+                    completion(repositoryArray: repoArray)
+                }
+            }
+            if let _ = response {
+                //print(response)
+            }
+        }.resume()
+        
+        
     }
 
 }

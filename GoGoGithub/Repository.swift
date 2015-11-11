@@ -10,13 +10,13 @@ import Foundation
 
 class Repository {
     
-    var owner: String?
-    var user: String?
+    var owner: Owner?
+    var name: String?
+    var description: String?
     
-    init(owner: String?, user: String) {
+    init(owner: Owner?, name: String, description: String?) {
         self.owner = owner
-        self.user = user
+        self.name = name
+        self.description = description
     }
-    
-    
 }

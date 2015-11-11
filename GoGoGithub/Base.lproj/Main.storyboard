@@ -71,10 +71,19 @@
                                     <action selector="postRepo:" destination="hcI-4E-3ae" eventType="touchUpInside" id="50x-oj-jPF"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="grm-Zi-xJ5">
+                                <rect key="frame" x="259" y="429" width="82" height="30"/>
+                                <state key="normal" title="repo search"/>
+                                <connections>
+                                    <action selector="searchRepo:" destination="hcI-4E-3ae" eventType="touchUpInside" id="I0A-wg-36N"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="K2C-tj-28Y" firstAttribute="centerX" secondItem="ZGe-do-VgS" secondAttribute="centerX" id="6oo-4f-Pz4"/>
+                            <constraint firstItem="grm-Zi-xJ5" firstAttribute="centerX" secondItem="ZGe-do-VgS" secondAttribute="centerX" id="Ag3-7G-2l7"/>
+                            <constraint firstItem="grm-Zi-xJ5" firstAttribute="top" secondItem="K2C-tj-28Y" secondAttribute="bottom" constant="40" id="TTe-k5-d1M"/>
                             <constraint firstItem="Re1-P3-pmn" firstAttribute="centerX" secondItem="ZGe-do-VgS" secondAttribute="centerX" id="o09-ZX-Knh"/>
                             <constraint firstItem="Re1-P3-pmn" firstAttribute="centerY" secondItem="ZGe-do-VgS" secondAttribute="centerY" id="sJC-GV-JbV"/>
                             <constraint firstItem="K2C-tj-28Y" firstAttribute="top" secondItem="Re1-P3-pmn" secondAttribute="bottom" constant="44" id="vHj-S9-mal"/>

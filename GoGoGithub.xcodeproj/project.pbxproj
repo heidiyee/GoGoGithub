@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B71497A81BF3E44B00F1BF32 /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71497A71BF3E44B00F1BF32 /* Owner.swift */; };
+		B71497AB1BF3FF2600F1BF32 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71497AA1BF3FF2600F1BF32 /* User.swift */; };
 		B78534371BF125B000F533AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78534361BF125B000F533AC /* AppDelegate.swift */; };
 		B78534391BF125B000F533AC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78534381BF125B000F533AC /* LoginViewController.swift */; };
 		B785343C1BF125B000F533AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B785343A1BF125B000F533AC /* Main.storyboard */; };
@@ -14,12 +16,14 @@
 		B78534411BF125B000F533AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B785343F1BF125B000F533AC /* LaunchScreen.storyboard */; };
 		B78534491BF1285700F533AC /* OAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78534481BF1285700F533AC /* OAuthClient.swift */; };
 		B785344D1BF1B53E00F533AC /* GithubService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B785344C1BF1B53E00F533AC /* GithubService.swift */; };
-		B785344F1BF27DB100F533AC /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B785344E1BF27DB100F533AC /* JSONParser.swift */; };
+		B785344F1BF27DB100F533AC /* ModelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B785344E1BF27DB100F533AC /* ModelExtensions.swift */; };
 		B78534521BF299EF00F533AC /* AfterLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78534511BF299EF00F533AC /* AfterLoginViewController.swift */; };
 		B78534541BF3AC1C00F533AC /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78534531BF3AC1C00F533AC /* Repository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B71497A71BF3E44B00F1BF32 /* Owner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
+		B71497AA1BF3FF2600F1BF32 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B78534331BF125B000F533AC /* GoGoGithub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoGoGithub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B78534361BF125B000F533AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B78534381BF125B000F533AC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -29,7 +33,7 @@
 		B78534421BF125B000F533AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B78534481BF1285700F533AC /* OAuthClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthClient.swift; sourceTree = "<group>"; };
 		B785344C1BF1B53E00F533AC /* GithubService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubService.swift; sourceTree = "<group>"; };
-		B785344E1BF27DB100F533AC /* JSONParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
+		B785344E1BF27DB100F533AC /* ModelExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelExtensions.swift; sourceTree = "<group>"; };
 		B78534511BF299EF00F533AC /* AfterLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AfterLoginViewController.swift; sourceTree = "<group>"; };
 		B78534531BF3AC1C00F533AC /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -45,6 +49,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B71497A91BF3EA0F00F1BF32 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B71497A71BF3E44B00F1BF32 /* Owner.swift */,
+				B78534531BF3AC1C00F533AC /* Repository.swift */,
+				B71497AA1BF3FF2600F1BF32 /* User.swift */,
+				B785344E1BF27DB100F533AC /* ModelExtensions.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		B785342A1BF125B000F533AC = {
 			isa = PBXGroup;
 			children = (
@@ -65,11 +80,10 @@
 			isa = PBXGroup;
 			children = (
 				B78534361BF125B000F533AC /* AppDelegate.swift */,
-				B78534481BF1285700F533AC /* OAuthClient.swift */,
 				B78534501BF299B600F533AC /* View Controllers */,
+				B71497A91BF3EA0F00F1BF32 /* Models */,
+				B78534481BF1285700F533AC /* OAuthClient.swift */,
 				B785344C1BF1B53E00F533AC /* GithubService.swift */,
-				B78534531BF3AC1C00F533AC /* Repository.swift */,
-				B785344E1BF27DB100F533AC /* JSONParser.swift */,
 				B785343A1BF125B000F533AC /* Main.storyboard */,
 				B785343D1BF125B000F533AC /* Assets.xcassets */,
 				B785343F1BF125B000F533AC /* LaunchScreen.storyboard */,
@@ -159,9 +173,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B78534491BF1285700F533AC /* OAuthClient.swift in Sources */,
-				B785344F1BF27DB100F533AC /* JSONParser.swift in Sources */,
+				B785344F1BF27DB100F533AC /* ModelExtensions.swift in Sources */,
 				B78534541BF3AC1C00F533AC /* Repository.swift in Sources */,
 				B78534391BF125B000F533AC /* LoginViewController.swift in Sources */,
+				B71497A81BF3E44B00F1BF32 /* Owner.swift in Sources */,
+				B71497AB1BF3FF2600F1BF32 /* User.swift in Sources */,
 				B78534521BF299EF00F533AC /* AfterLoginViewController.swift in Sources */,
 				B785344D1BF1B53E00F533AC /* GithubService.swift in Sources */,
 				B78534371BF125B000F533AC /* AppDelegate.swift in Sources */,
