@@ -9,7 +9,11 @@
 import UIKit
 
 
-class ViewController: UIViewController {
+class LoginViewController: UIViewController {
+    
+    class func identifier() -> String {
+        return "LoginViewController"
+    }
 
 
     override func viewDidLoad() {
@@ -21,22 +25,17 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
 
     @IBAction func loginButtonPressed(sender: UIButton) {
-        OAuthClient.shared.requestGithubAccess(["scope" : "user, user:email"])
-    }
-
-    @IBAction func printToken(sender: UIButton) {
-        let token = OAuthClient.shared.accessToken()
-        print(token)
+        OAuthClient.shared.requestGithubAccess(["scope" : "user,repo"])
+        //print(OAuthClient.shared.accessToken())
 
     }
-    @IBAction func getRepos(sender: UIButton) {
-        GithubService.getReposWithSearch { (data) -> Void in
-            if let data = data {
-                print(data)
-            }
-        }
-    }
+
+//    @IBAction func printToken(sender: UIButton) {
+//
+//    }
+
 }
 

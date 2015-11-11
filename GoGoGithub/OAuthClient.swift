@@ -21,19 +21,26 @@ class OAuthClient {
     
     func requestGithubAccess(parameters: [String: String]) {
         
-        var requestString: String?
+        var requestString = ""
+        
+        print(parameters)
         
         for (index, value) in parameters {
-            requestString = requestString?.stringByAppendingString("\(index)=\(value)")
+            print(index)
+            print(value)
+            requestString = requestString.stringByAppendingString("\(index)=\(value)")
         }
+        
+        print(requestString)
         
         guard let requestURL = NSURL(string: "\(kOAuthAuthorize)?\(kClientId)&scope=\(requestString)") else {return}
         UIApplication.sharedApplication().openURL(requestURL)
         
     }
     
-    func exchangeForToken(code: String) {
+    func exchangeForToken(code: String, completion: (success: Bool) -> ()) {
         // Once you get code, exchange for token
+        // Add completion once you get a token
 
         print(code)
         
@@ -48,45 +55,36 @@ class OAuthClient {
             if let data = data {
                 do {
                     if let rootObject = try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String: AnyObject] {
-                        print(rootObject)
                         if let accessToken = rootObject["access_token"] as? String {
                             NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
                                 let defaults = NSUserDefaults.standardUserDefaults()
                                 defaults.setObject(accessToken, forKey: kAccessTokenKey)
-                                
+                                completion(success: defaults.synchronize())
                             })
-                            print(kAccessTokenKey)
                         }
-                        }
-                    
                     }
-                catch _ {
-            
-                }
+                    
+                }catch _ {}
             }
-            if let response = response {
+            
+            if let _ = response {
                 print(":)")
             }
+            
         }.resume()
         
     
     }
     
     func extractTemporaryCode(url: NSURL) -> String {
-        
         guard let returnedURL = url.absoluteString.componentsSeparatedByString("=").last else {return "error"}
         return returnedURL
         
     }
     
-    func accessToken() -> String {
-        
-        guard let accessToken = NSUserDefaults.standardUserDefaults().stringForKey(kAccessTokenKey) else {return "not workign"}
-        return accessToken
-        
+    func accessToken() -> String? {
+        return NSUserDefaults.standardUserDefaults().stringForKey(kAccessTokenKey)
     }
-    
-    
     
 
 }
