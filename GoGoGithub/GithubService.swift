@@ -14,7 +14,6 @@ class GithubService {
     
     class func getReposWithSearch(text: String, completion: (repositoryArray: [Repository]) -> Void) {
         
-        //https://api.github.com/search/repositories?q=tetris+language:assembly&sort=stars&order=desc
         if let token = OAuthClient.shared.accessToken() {
             guard let baseURL = NSURL(string: "https://api.github.com/search/repositories?q=\(text)") else {return}
             print(baseURL)
@@ -150,5 +149,38 @@ class GithubService {
         
         
     }
+    
+    class func getUserWithSearch(name: String, completion: (userArray: [User]) -> ())  {
+        
+        if let token = OAuthClient.shared.accessToken() {
+            print(token)
+            guard let baseURL = NSURL(string: "https://api.github.com/search/users?q=\(name)") else {return}
+            let request = NSMutableURLRequest(URL: baseURL)
+            request.setValue("application/json", forHTTPHeaderField: "Accept")
+            request.setValue("token \(token)", forHTTPHeaderField: "Authorization")
+            
+            
+            NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) -> Void in
+                if let error = error {
+                    print(error)
+                }
+                if let response = response as? NSHTTPURLResponse {
+                    print(response.statusCode)
+                    if response.statusCode == 200 {
+                        if let data = data {
+                            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                                if let userArray = User.getUserArray(data) {
+                                    completion(userArray: userArray)
+                                }
+                            })
+                            
+                        }
+                    }
+                }
+                
+            }.resume()
+        }
+    }
+
 
 }

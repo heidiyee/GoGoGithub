@@ -13,6 +13,7 @@
 		B71497AF1BF41AC500F1BF32 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71497AE1BF41AC500F1BF32 /* UserViewController.swift */; };
 		B71497B31BF42EC900F1BF32 /* SearchForRepos.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71497B21BF42EC900F1BF32 /* SearchForRepos.swift */; };
 		B71497B71BF4490F00F1BF32 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71497B61BF4490F00F1BF32 /* SearchTableViewCell.swift */; };
+		B71497BA1BF53D5600F1BF32 /* SearchUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71497B91BF53D5600F1BF32 /* SearchUserViewController.swift */; };
 		B78534371BF125B000F533AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78534361BF125B000F533AC /* AppDelegate.swift */; };
 		B78534391BF125B000F533AC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78534381BF125B000F533AC /* LoginViewController.swift */; };
 		B785343C1BF125B000F533AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B785343A1BF125B000F533AC /* Main.storyboard */; };
@@ -32,6 +33,7 @@
 		B71497AE1BF41AC500F1BF32 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		B71497B21BF42EC900F1BF32 /* SearchForRepos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchForRepos.swift; sourceTree = "<group>"; };
 		B71497B61BF4490F00F1BF32 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		B71497B91BF53D5600F1BF32 /* SearchUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchUserViewController.swift; sourceTree = "<group>"; };
 		B78534331BF125B000F533AC /* GoGoGithub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoGoGithub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B78534361BF125B000F533AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B78534381BF125B000F533AC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +68,15 @@
 				B785344E1BF27DB100F533AC /* ModelExtensions.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		B71497B81BF53D3900F1BF32 /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B71497AC1BF40C9A00F1BF32 /* CustomRepoCell.swift */,
+				B71497B61BF4490F00F1BF32 /* SearchTableViewCell.swift */,
+			);
+			name = "Custom Cells";
 			sourceTree = "<group>";
 		};
 		B785342A1BF125B000F533AC = {
@@ -106,9 +117,9 @@
 				B78534381BF125B000F533AC /* LoginViewController.swift */,
 				B71497AE1BF41AC500F1BF32 /* UserViewController.swift */,
 				B78534511BF299EF00F533AC /* AfterLoginViewController.swift */,
+				B71497B91BF53D5600F1BF32 /* SearchUserViewController.swift */,
 				B71497B21BF42EC900F1BF32 /* SearchForRepos.swift */,
-				B71497AC1BF40C9A00F1BF32 /* CustomRepoCell.swift */,
-				B71497B61BF4490F00F1BF32 /* SearchTableViewCell.swift */,
+				B71497B81BF53D3900F1BF32 /* Custom Cells */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -187,6 +198,7 @@
 				B78534491BF1285700F533AC /* OAuthClient.swift in Sources */,
 				B785344F1BF27DB100F533AC /* ModelExtensions.swift in Sources */,
 				B78534541BF3AC1C00F533AC /* Repository.swift in Sources */,
+				B71497BA1BF53D5600F1BF32 /* SearchUserViewController.swift in Sources */,
 				B71497AF1BF41AC500F1BF32 /* UserViewController.swift in Sources */,
 				B78534391BF125B000F533AC /* LoginViewController.swift in Sources */,
 				B71497A81BF3E44B00F1BF32 /* Owner.swift in Sources */,

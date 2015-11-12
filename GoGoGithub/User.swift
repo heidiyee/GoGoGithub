@@ -14,11 +14,13 @@ class User {
     var repoURL: String?
     var id: Int?
     var login: String?
+    var avatar: String?
     
-    init(name: String?, repoURL: String?, id: Int?, login: String?) {
+    init(name: String? = "", repoURL: String? = "", id: Int?, login: String?, avatar: String? = "") {
         self.name = name
         self.repoURL = repoURL
         self.id = id
         self.login = login
+        self.avatar = avatar
     }
 }

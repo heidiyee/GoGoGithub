@@ -81,10 +81,30 @@ extension User {
         
         do {
             if let rootObject = try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String: AnyObject] {
-                if let login = rootObject["login"] as? String, name = rootObject["name"] as? String, repoUrl = rootObject["repos_url"] as? String, id = rootObject["id"] as? Int {
-                    return User(name: name, repoURL: repoUrl, id: id, login: login)
+                if let login = rootObject["login"] as? String, name = rootObject["name"] as? String, repoUrl = rootObject["repos_url"] as? String, id = rootObject["id"] as? Int, avatar = rootObject["avatar_url"] as? String {
+                    return User(name: name, repoURL: repoUrl, id: id, login: login, avatar: avatar)
                 }
                     
+            }
+        }catch _ {}
+        return nil
+    }
+    
+    class func getUserArray(data: NSData) -> [User]? {
+        var userArray = [User]()
+        
+        do {
+            if let rootObject = try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String: AnyObject] {
+                //print(rootObject)
+                if let items = rootObject["items"] as? [[String:AnyObject]] {
+                    //print(items)
+                    for objects in items {
+                        if let login = objects["login"] as? String, name = objects["name"] as? String, repoUrl = objects["repos_url"] as? String, id = objects["id"] as? Int, avatar = objects["avatar_url"] as? String {
+                            userArray.append(User(name: name, repoURL: repoUrl, id: id, login: login, avatar: avatar))
+                        }
+                    }
+                }
+                
             }
         }catch _ {}
         return nil
