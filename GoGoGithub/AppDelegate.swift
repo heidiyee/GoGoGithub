@@ -70,7 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let token = OAuthClient.shared.accessToken() {
             print(token)
         } else {
-            guard let mainViewController = self.window?.rootViewController as? AfterLoginViewController, storyboard = mainViewController.storyboard else {return}
+            guard let mainViewController = self.window?.rootViewController as? UITabBarController, storyboard = mainViewController.storyboard else {return}
             guard let authViewController = storyboard.instantiateViewControllerWithIdentifier(LoginViewController.identifier()) as? LoginViewController else {return}
             
             self.loginViewController = authViewController

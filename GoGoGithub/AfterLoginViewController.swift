@@ -8,33 +8,77 @@
 
 import UIKit
 
-class AfterLoginViewController: UIViewController {
+class AfterLoginViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var user: User?
-    var array = [Repository]()
+    var array = [Repository]() {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    var searchArray = [Repository]() {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        getRepos()
+        setupTableView()
+    }
+    
+    func setupTableView() {
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+    }
     
     
     class func identifier() -> String {
         return "AfterLoginViewController"
     }
     
-    @IBAction func getReposWithSearchOption(sender: UIButton) {
-        GithubService.getUser { (user) -> () in
-            self.user = user
-            print(self.user?.name)
-        }
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        
+        return self.array.count
     }
     
-    @IBAction func postRepo(sender: UIButton) {
-        GithubService.postRepo("blah")
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier(CustomRepoCell.identifier(), forIndexPath: indexPath) as! CustomRepoCell
+        cell.repo = self.array[indexPath.row]
+        
+        return cell
+        
     }
     
-    @IBAction func searchRepo(sender: UIButton) {
+    func getRepos() {
         GithubService.getRepos { (repositoryArray) -> Void in
             self.array = repositoryArray
-            print(self.array)
         }
     }
+    
+//    @IBAction func getReposWithSearchOption(sender: UIButton) {
+//        GithubService.getUser { (user) -> () in
+//            self.user = user
+//            print(self.user?.name)
+//        }
+//    }
+//    
+    @IBAction func postRepo(sender: UIButton) {
+        GithubService.postRepo("name")
+    }
+//
+//    @IBAction func searchRepo(sender: UIButton) {
+//        GithubService.getRepos { (repositoryArray) -> Void in
+//            self.array = repositoryArray
+//            print(self.array)
+//        }
+//    }
     
     
 }

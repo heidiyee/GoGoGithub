@@ -32,6 +32,35 @@ extension Repository {
         } catch _ {}
         return nil
     }
+    
+    
+    class func parseJSONToRepositoryWithSearch(data: NSData) -> [Repository]? {
+        
+        var repoArray = [Repository]()
+        
+        do {
+            if let rootObject = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? [String: AnyObject] {
+                //print(rootObject)
+                if let items = rootObject["items"] as? [[String:AnyObject]] {
+                    print(items)
+                    for objects in items {
+                        if let ownerDictionary = objects["owner"] as? [String: AnyObject], name = objects["full_name"] as? String, description = objects["description"] as? String {
+                            print(name)
+                            let owner = Owner.getOwner(ownerDictionary)
+                            let repo = Repository(owner: owner, name: name, description: description)
+                            
+                            repoArray.append(repo)
+                        }
+                    }
+
+                }
+                return repoArray
+            }
+            
+            
+        } catch _ {}
+        return nil
+    }
 }
 
 extension Owner {

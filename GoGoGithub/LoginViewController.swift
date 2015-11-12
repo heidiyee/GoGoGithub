@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class LoginViewController: UIViewController {
     
     class func identifier() -> String {
@@ -32,10 +31,6 @@ class LoginViewController: UIViewController {
         //print(OAuthClient.shared.accessToken())
 
     }
-
-//    @IBAction func printToken(sender: UIButton) {
-//
-//    }
 
 }
 

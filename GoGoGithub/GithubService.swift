@@ -12,28 +12,34 @@ import UIKit
 class GithubService {
     
     
-    class func getReposWithSearch(completion: (json: NSData) -> Void) {
+    class func getReposWithSearch(text: String, completion: (repositoryArray: [Repository]) -> Void) {
         
         //https://api.github.com/search/repositories?q=tetris+language:assembly&sort=stars&order=desc
-
-        guard let baseURL = NSURL(string: "https://api.github.com/search/repositories?q=tetris+language:assembly&sort=stars&order=desc") else {return}
-        let request = NSMutableURLRequest(URL: baseURL)
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        if let token = OAuthClient.shared.accessToken() {
+            guard let baseURL = NSURL(string: "https://api.github.com/search/repositories?access_token=\(token)&q=\(text)") else {return}
+            print(baseURL)
+            let request = NSMutableURLRequest(URL: baseURL)
+            request.setValue("application/json", forHTTPHeaderField: "Accept")
+            
+            
+            NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) -> Void in
+                if let error = error {
+                    print(error)
+                }
+                if let data = data {
+                    //print(data)
+                    NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                        if let repoArray = Repository.parseJSONToRepositoryWithSearch(data) {
+                            completion(repositoryArray: repoArray)
+                        }
+                    })
+                }
+                if let _ = response {
+                    //print(response)
+                }
+            }.resume()
         
-        
-        NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) -> Void in
-            if let error = error {
-                print(error)
-            }
-            if let data = data {
-                completion(json: data)
-            }
-            if let _ = response {
-                //print(response)
-            }
-        }.resume()
-        
-
+        }
     }
     
     class func getUser(completion: (user: User) -> ())  {
@@ -51,9 +57,11 @@ class GithubService {
                     print(error)
                 }
                 if let data = data {
-                    if let user = User.getUser(data) {
-                        completion(user: user)
-                    }
+                    NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                        if let user = User.getUser(data) {
+                            completion(user: user)
+                        }
+                    })
         
                 }
                 if let _ = response {
@@ -90,7 +98,9 @@ class GithubService {
                         print(response.statusCode)
                     }
                     if let data = data {
-                        print(data)
+                        NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                            print(data)
+                        })
                     }
 
                 }.resume()
@@ -111,9 +121,12 @@ class GithubService {
                 print(error)
             }
             if let data = data {
-                if let repoArray = Repository.parseJSONToRepository(data) {
-                    completion(repositoryArray: repoArray)
-                }
+                NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                    if let repoArray = Repository.parseJSONToRepository(data) {
+                        completion(repositoryArray: repoArray)
+                    }
+                })
+
             }
             if let _ = response {
                 //print(response)
