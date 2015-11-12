@@ -16,27 +16,32 @@ class GithubService {
         
         //https://api.github.com/search/repositories?q=tetris+language:assembly&sort=stars&order=desc
         if let token = OAuthClient.shared.accessToken() {
-            guard let baseURL = NSURL(string: "https://api.github.com/search/repositories?access_token=\(token)&q=\(text)") else {return}
+            guard let baseURL = NSURL(string: "https://api.github.com/search/repositories?q=\(text)") else {return}
             print(baseURL)
             let request = NSMutableURLRequest(URL: baseURL)
             request.setValue("application/json", forHTTPHeaderField: "Accept")
+            request.setValue("token \(token)", forHTTPHeaderField: "Authorization")
             
             
             NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) -> Void in
                 if let error = error {
                     print(error)
                 }
-                if let data = data {
-                    //print(data)
-                    NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                        if let repoArray = Repository.parseJSONToRepositoryWithSearch(data) {
-                            completion(repositoryArray: repoArray)
+                if let response = response as? NSHTTPURLResponse {
+                    print(response.statusCode)
+                    if response.statusCode == 200 {
+                        if let data = data {
+                            //print(data)
+                            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                                if let repoArray = Repository.parseJSONToRepositoryWithSearch(data) {
+                                    completion(repositoryArray: repoArray)
+                                }
+                            })
                         }
-                    })
+
+                    }
                 }
-                if let _ = response {
-                    //print(response)
-                }
+
             }.resume()
         
         }
@@ -46,27 +51,31 @@ class GithubService {
         
         if let token = OAuthClient.shared.accessToken() {
             print(token)
-            guard let baseURL = NSURL(string: "https://api.github.com/user?access_token=\(token)") else {return}
+            guard let baseURL = NSURL(string: "https://api.github.com/user") else {return}
             let request = NSMutableURLRequest(URL: baseURL)
             request.setValue("application/json", forHTTPHeaderField: "Accept")
-            //request.setValue(" token \(token)", forHTTPHeaderField: "Authorization:")
+            request.setValue("token \(token)", forHTTPHeaderField: "Authorization")
 
             
             NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) -> Void in
                 if let error = error {
                     print(error)
                 }
-                if let data = data {
-                    NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                        if let user = User.getUser(data) {
-                            completion(user: user)
+                if let response = response as? NSHTTPURLResponse {
+                    print(response.statusCode)
+                    if response.statusCode == 200 {
+                        if let data = data {
+                            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                                if let user = User.getUser(data) {
+                                    completion(user: user)
+                                }
+                            })
+                            
                         }
-                    })
-        
+                    }
                 }
-                if let _ = response {
-                    //print(response)
-                }
+
+
             }.resume()
         }
     }
@@ -75,7 +84,7 @@ class GithubService {
         do {
         
             if let token = OAuthClient.shared.accessToken() {
-                guard let baseURL = NSURL(string: "https://api.github.com/user/repos?access_token=\(token)") else {return}
+                guard let baseURL = NSURL(string: "https://api.github.com/user/repos") else {return}
                 print(baseURL)
                 let request = NSMutableURLRequest(URL: baseURL)
                 
@@ -83,6 +92,8 @@ class GithubService {
                 parameters["name"] = name
                 
                 request.setValue("application/json", forHTTPHeaderField: "Accept")
+                request.setValue("token \(token)", forHTTPHeaderField: "Authorization")
+
                 request.HTTPMethod = "POST"
                 print(request)
             
@@ -94,13 +105,15 @@ class GithubService {
                         print(error)
                     }
                     if let response = response as? NSHTTPURLResponse {
-                        print(response)
                         print(response.statusCode)
-                    }
-                    if let data = data {
-                        NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                            print(data)
-                        })
+                        if response.statusCode == 200 {
+                            if let data = data {
+                                NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                                    print(data)
+                                })
+                            }
+
+                        }
                     }
 
                 }.resume()
@@ -111,7 +124,7 @@ class GithubService {
     
     class func getRepos(completion: (repositoryArray: [Repository]) -> Void) {
         
-        guard let baseURL = NSURL(string: "https://api.github.com/repositories?") else {return}
+        guard let baseURL = NSURL(string: "https://api.github.com/repositories") else {return}
         let request = NSMutableURLRequest(URL: baseURL)
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         
@@ -120,17 +133,19 @@ class GithubService {
             if let error = error {
                 print(error)
             }
-            if let data = data {
-                NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                    if let repoArray = Repository.parseJSONToRepository(data) {
-                        completion(repositoryArray: repoArray)
+            if let response = response as? NSHTTPURLResponse {
+                if response.statusCode == 200 {
+                    if let data = data {
+                        NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                            if let repoArray = Repository.parseJSONToRepository(data) {
+                                completion(repositoryArray: repoArray)
+                            }
+                        })
+                        
                     }
-                })
+                }
+            }
 
-            }
-            if let _ = response {
-                //print(response)
-            }
         }.resume()
         
         
