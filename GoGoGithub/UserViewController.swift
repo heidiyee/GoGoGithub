@@ -8,7 +8,7 @@
 
 import UIKit
     
-class UserViewController: UIViewController  {
+class UserViewController: UIViewController {
         
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -38,19 +38,15 @@ class UserViewController: UIViewController  {
         self.getUser()
     }
     
-
-    
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == SearchUserViewController.identifier() {
-//            
-//        }
-//    }
-    
     
     func getUser() {
         GithubService.getUser { (user) -> () in
             self.user = user
         }
     }
+    
+//    func searchUserViewControllerDidFinish() {
+//        self.dismissViewControllerAnimated(true, completion: nil)
+//    }
     
 }

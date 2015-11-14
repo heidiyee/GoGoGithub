@@ -16,7 +16,6 @@
 		B71497BA1BF53D5600F1BF32 /* SearchUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71497B91BF53D5600F1BF32 /* SearchUserViewController.swift */; };
 		B78534371BF125B000F533AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78534361BF125B000F533AC /* AppDelegate.swift */; };
 		B78534391BF125B000F533AC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78534381BF125B000F533AC /* LoginViewController.swift */; };
-		B785343C1BF125B000F533AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B785343A1BF125B000F533AC /* Main.storyboard */; };
 		B785343E1BF125B000F533AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B785343D1BF125B000F533AC /* Assets.xcassets */; };
 		B78534411BF125B000F533AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B785343F1BF125B000F533AC /* LaunchScreen.storyboard */; };
 		B78534491BF1285700F533AC /* OAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78534481BF1285700F533AC /* OAuthClient.swift */; };
@@ -24,6 +23,10 @@
 		B785344F1BF27DB100F533AC /* ModelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B785344E1BF27DB100F533AC /* ModelExtensions.swift */; };
 		B78534521BF299EF00F533AC /* AfterLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78534511BF299EF00F533AC /* AfterLoginViewController.swift */; };
 		B78534541BF3AC1C00F533AC /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78534531BF3AC1C00F533AC /* Repository.swift */; };
+		B78EA13F1BF55E9400BDC4D6 /* UserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78EA13E1BF55E9400BDC4D6 /* UserCollectionViewCell.swift */; };
+		B78EA1411BF570C500BDC4D6 /* OtherUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78EA1401BF570C500BDC4D6 /* OtherUserViewController.swift */; };
+		B78EA1451BF69F5800BDC4D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B78EA1441BF69F5800BDC4D6 /* Main.storyboard */; };
+		B78EA1471BF6A47600BDC4D6 /* CustomTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78EA1461BF6A47600BDC4D6 /* CustomTransition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +40,6 @@
 		B78534331BF125B000F533AC /* GoGoGithub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoGoGithub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B78534361BF125B000F533AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B78534381BF125B000F533AC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		B785343B1BF125B000F533AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B785343D1BF125B000F533AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B78534401BF125B000F533AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B78534421BF125B000F533AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -46,6 +48,10 @@
 		B785344E1BF27DB100F533AC /* ModelExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelExtensions.swift; sourceTree = "<group>"; };
 		B78534511BF299EF00F533AC /* AfterLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AfterLoginViewController.swift; sourceTree = "<group>"; };
 		B78534531BF3AC1C00F533AC /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		B78EA13E1BF55E9400BDC4D6 /* UserCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCollectionViewCell.swift; sourceTree = "<group>"; };
+		B78EA1401BF570C500BDC4D6 /* OtherUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherUserViewController.swift; sourceTree = "<group>"; };
+		B78EA1441BF69F5800BDC4D6 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		B78EA1461BF6A47600BDC4D6 /* CustomTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTransition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				B71497AC1BF40C9A00F1BF32 /* CustomRepoCell.swift */,
+				B78EA13E1BF55E9400BDC4D6 /* UserCollectionViewCell.swift */,
 				B71497B61BF4490F00F1BF32 /* SearchTableViewCell.swift */,
 			);
 			name = "Custom Cells";
@@ -99,11 +106,12 @@
 			isa = PBXGroup;
 			children = (
 				B78534361BF125B000F533AC /* AppDelegate.swift */,
+				B78EA1461BF6A47600BDC4D6 /* CustomTransition.swift */,
 				B78534501BF299B600F533AC /* View Controllers */,
 				B71497A91BF3EA0F00F1BF32 /* Models */,
 				B78534481BF1285700F533AC /* OAuthClient.swift */,
+				B78EA1441BF69F5800BDC4D6 /* Main.storyboard */,
 				B785344C1BF1B53E00F533AC /* GithubService.swift */,
-				B785343A1BF125B000F533AC /* Main.storyboard */,
 				B785343D1BF125B000F533AC /* Assets.xcassets */,
 				B785343F1BF125B000F533AC /* LaunchScreen.storyboard */,
 				B78534421BF125B000F533AC /* Info.plist */,
@@ -117,6 +125,7 @@
 				B78534381BF125B000F533AC /* LoginViewController.swift */,
 				B71497AE1BF41AC500F1BF32 /* UserViewController.swift */,
 				B78534511BF299EF00F533AC /* AfterLoginViewController.swift */,
+				B78EA1401BF570C500BDC4D6 /* OtherUserViewController.swift */,
 				B71497B91BF53D5600F1BF32 /* SearchUserViewController.swift */,
 				B71497B21BF42EC900F1BF32 /* SearchForRepos.swift */,
 				B71497B81BF53D3900F1BF32 /* Custom Cells */,
@@ -184,7 +193,7 @@
 			files = (
 				B78534411BF125B000F533AC /* LaunchScreen.storyboard in Resources */,
 				B785343E1BF125B000F533AC /* Assets.xcassets in Resources */,
-				B785343C1BF125B000F533AC /* Main.storyboard in Resources */,
+				B78EA1451BF69F5800BDC4D6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,8 +212,11 @@
 				B78534391BF125B000F533AC /* LoginViewController.swift in Sources */,
 				B71497A81BF3E44B00F1BF32 /* Owner.swift in Sources */,
 				B71497AB1BF3FF2600F1BF32 /* User.swift in Sources */,
+				B78EA1411BF570C500BDC4D6 /* OtherUserViewController.swift in Sources */,
 				B71497AD1BF40C9A00F1BF32 /* CustomRepoCell.swift in Sources */,
+				B78EA13F1BF55E9400BDC4D6 /* UserCollectionViewCell.swift in Sources */,
 				B71497B71BF4490F00F1BF32 /* SearchTableViewCell.swift in Sources */,
+				B78EA1471BF6A47600BDC4D6 /* CustomTransition.swift in Sources */,
 				B78534521BF299EF00F533AC /* AfterLoginViewController.swift in Sources */,
 				B71497B31BF42EC900F1BF32 /* SearchForRepos.swift in Sources */,
 				B785344D1BF1B53E00F533AC /* GithubService.swift in Sources */,
@@ -215,14 +227,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B785343A1BF125B000F533AC /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B785343B1BF125B000F533AC /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		B785343F1BF125B000F533AC /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

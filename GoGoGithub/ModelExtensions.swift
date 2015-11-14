@@ -42,7 +42,6 @@ extension Repository {
             if let rootObject = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? [String: AnyObject] {
                 //print(rootObject)
                 if let items = rootObject["items"] as? [[String:AnyObject]] {
-                    print(items)
                     for objects in items {
                         if let ownerDictionary = objects["owner"] as? [String: AnyObject], name = objects["full_name"] as? String, description = objects["description"] as? String {
                             print(name)
@@ -97,13 +96,16 @@ extension User {
             if let rootObject = try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String: AnyObject] {
                 //print(rootObject)
                 if let items = rootObject["items"] as? [[String:AnyObject]] {
-                    //print(items)
                     for objects in items {
-                        if let login = objects["login"] as? String, name = objects["name"] as? String, repoUrl = objects["repos_url"] as? String, id = objects["id"] as? Int, avatar = objects["avatar_url"] as? String {
-                            userArray.append(User(name: name, repoURL: repoUrl, id: id, login: login, avatar: avatar))
+                        if let login = objects["login"] as? String, repoUrl = objects["repos_url"] as? String, id = objects["id"] as? Int, avatar = objects["avatar_url"] as? String {
+                            
+                            let user = User(repoURL: repoUrl, id: id, login: login, avatar: avatar)
+                            userArray.append(user)
+                            
                         }
                     }
                 }
+                return userArray
                 
             }
         }catch _ {}
