@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchForRepos: UIViewController, UITableViewDataSource, UISearchBarDelegate {
+class SearchForRepos: UIViewController, UITableViewDataSource, UISearchBarDelegate, RepositoryWebViewDelegate {
     
     @IBOutlet weak var searchReposBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
@@ -61,6 +61,20 @@ class SearchForRepos: UIViewController, UITableViewDataSource, UISearchBarDelega
             
 
         }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == RepositoryWebView.identifier() {
+            guard let repoWebViewController = segue.destinationViewController as? RepositoryWebView else {return}
+            guard let myIndexPath = self.tableView.indexPathForSelectedRow else {return}
+            let repo = self.array[myIndexPath.row]
+            repoWebViewController.repo = repo
+            repoWebViewController.delegate = self
+        }
+    }
+    
+    func repositoryWebViewDidFinish() {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
 }

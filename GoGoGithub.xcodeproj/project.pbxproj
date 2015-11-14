@@ -27,6 +27,7 @@
 		B78EA1411BF570C500BDC4D6 /* OtherUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78EA1401BF570C500BDC4D6 /* OtherUserViewController.swift */; };
 		B78EA1451BF69F5800BDC4D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B78EA1441BF69F5800BDC4D6 /* Main.storyboard */; };
 		B78EA1471BF6A47600BDC4D6 /* CustomTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78EA1461BF6A47600BDC4D6 /* CustomTransition.swift */; };
+		B78EA14B1BF7D32F00BDC4D6 /* RepositoryWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78EA14A1BF7D32F00BDC4D6 /* RepositoryWebView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		B78EA1401BF570C500BDC4D6 /* OtherUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherUserViewController.swift; sourceTree = "<group>"; };
 		B78EA1441BF69F5800BDC4D6 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B78EA1461BF6A47600BDC4D6 /* CustomTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTransition.swift; sourceTree = "<group>"; };
+		B78EA14A1BF7D32F00BDC4D6 /* RepositoryWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryWebView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,9 +127,10 @@
 				B78534381BF125B000F533AC /* LoginViewController.swift */,
 				B71497AE1BF41AC500F1BF32 /* UserViewController.swift */,
 				B78534511BF299EF00F533AC /* AfterLoginViewController.swift */,
-				B78EA1401BF570C500BDC4D6 /* OtherUserViewController.swift */,
 				B71497B91BF53D5600F1BF32 /* SearchUserViewController.swift */,
+				B78EA1401BF570C500BDC4D6 /* OtherUserViewController.swift */,
 				B71497B21BF42EC900F1BF32 /* SearchForRepos.swift */,
+				B78EA14A1BF7D32F00BDC4D6 /* RepositoryWebView.swift */,
 				B71497B81BF53D3900F1BF32 /* Custom Cells */,
 			);
 			name = "View Controllers";
@@ -221,6 +224,7 @@
 				B71497B31BF42EC900F1BF32 /* SearchForRepos.swift in Sources */,
 				B785344D1BF1B53E00F533AC /* GithubService.swift in Sources */,
 				B78534371BF125B000F533AC /* AppDelegate.swift in Sources */,
+				B78EA14B1BF7D32F00BDC4D6 /* RepositoryWebView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,10 +17,10 @@ extension Repository {
         do {
             if let rootObject = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? [[String: AnyObject]] {
                 for objects in rootObject {
-                    if let ownerDictionary = objects["owner"] as? [String: AnyObject], name = objects["full_name"] as? String, description = objects["description"] as? String {
+                    if let ownerDictionary = objects["owner"] as? [String: AnyObject], name = objects["full_name"] as? String, description = objects["description"] as? String, repoURL = objects["html_url"] as? String {
                         
                         let owner = Owner.getOwner(ownerDictionary)
-                        let repo = Repository(owner: owner, name: name, description: description)
+                        let repo = Repository(owner: owner, name: name, description: description, repoURL: repoURL)
                         
                         repoArray.append(repo)
                     }
@@ -43,10 +43,11 @@ extension Repository {
                 //print(rootObject)
                 if let items = rootObject["items"] as? [[String:AnyObject]] {
                     for objects in items {
-                        if let ownerDictionary = objects["owner"] as? [String: AnyObject], name = objects["full_name"] as? String, description = objects["description"] as? String {
+                        //print(objects)
+                        if let ownerDictionary = objects["owner"] as? [String: AnyObject], name = objects["full_name"] as? String, description = objects["description"] as? String, repoURL = objects["html_url"] as? String {
                             print(name)
                             let owner = Owner.getOwner(ownerDictionary)
-                            let repo = Repository(owner: owner, name: name, description: description)
+                            let repo = Repository(owner: owner, name: name, description: description, repoURL: repoURL)
                             
                             repoArray.append(repo)
                         }

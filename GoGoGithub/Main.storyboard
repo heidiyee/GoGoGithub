@@ -44,7 +44,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1586" y="-162"/>
+            <point key="canvasLocation" x="1470" y="558"/>
         </scene>
         <!--Repositories-->
         <scene sceneID="VkA-pE-xpl">
@@ -110,7 +110,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5up-cn-8hb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1588" y="558"/>
+            <point key="canvasLocation" x="2044" y="1337"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="uJv-od-61o">
@@ -122,9 +122,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <segue destination="hIP-4s-Ulb" kind="relationship" relationship="viewControllers" id="odb-5h-t5R"/>
                         <segue destination="hcI-4E-3ae" kind="relationship" relationship="viewControllers" id="UPo-sL-h2U"/>
                         <segue destination="dIZ-zr-ofa" kind="relationship" relationship="viewControllers" id="ZHh-zo-OcK"/>
-                        <segue destination="hIP-4s-Ulb" kind="relationship" relationship="viewControllers" id="odb-5h-t5R"/>
                         <segue destination="7C5-cC-Qh3" kind="relationship" relationship="viewControllers" id="JxD-9t-K1P"/>
                     </connections>
                 </tabBarController>
@@ -132,7 +132,7 @@
             </objects>
             <point key="canvasLocation" x="776" y="558"/>
         </scene>
-        <!--Item-->
+        <!--User Profile-->
         <scene sceneID="eLq-B5-uxL">
             <objects>
                 <viewController storyboardIdentifier="UserViewController" id="hIP-4s-Ulb" customClass="UserViewController" customModule="GoGoGithub" customModuleProvider="target" sceneMemberID="viewController">
@@ -184,7 +184,7 @@
                             <constraint firstItem="nHt-1q-Jz0" firstAttribute="leading" secondItem="0tk-cj-3mz" secondAttribute="leading" id="wye-kc-xQn"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="SgD-av-N7o"/>
+                    <tabBarItem key="tabBarItem" title="User Profile" id="SgD-av-N7o"/>
                     <connections>
                         <outlet property="loginLabel" destination="nHt-1q-Jz0" id="Esd-jd-TzY"/>
                         <outlet property="nameLabel" destination="zPi-9S-cmt" id="2jf-mt-Trl"/>
@@ -194,9 +194,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bgq-I8-b27" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="70" y="1337"/>
+            <point key="canvasLocation" x="-246" y="1337"/>
         </scene>
-        <!--Item-->
+        <!--Search Users-->
         <scene sceneID="eiF-Fx-FT5">
             <objects>
                 <viewController storyboardIdentifier="SearchUserViewController" automaticallyAdjustsScrollViewInsets="NO" id="7C5-cC-Qh3" customClass="SearchUserViewController" customModule="GoGoGithub" customModuleProvider="target" sceneMemberID="viewController">
@@ -265,7 +265,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="LaX-Jj-h93"/>
+                    <tabBarItem key="tabBarItem" title="Search Users" id="LaX-Jj-h93"/>
                     <connections>
                         <outlet property="userCollectionView" destination="BuE-mo-m67" id="Tbc-Qd-rTf"/>
                         <outlet property="userSearchBar" destination="96t-NV-WKQ" id="BZv-QF-bUm"/>
@@ -273,7 +273,62 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zib-M7-yUZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1604" y="1337"/>
+            <point key="canvasLocation" x="1288" y="1337"/>
+        </scene>
+        <!--Repository Web View-->
+        <scene sceneID="Rk9-jr-o6d">
+            <objects>
+                <viewController storyboardIdentifier="RepositoryWebView" id="dyN-XL-Gj9" customClass="RepositoryWebView" customModule="GoGoGithub" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9Du-UC-KQf"/>
+                        <viewControllerLayoutGuide type="bottom" id="ELt-bD-d4S"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VnQ-dQ-JCC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fTa-vh-XWL">
+                                <rect key="frame" x="0.0" y="20" width="600" height="550"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sSl-Tr-Wex">
+                                <rect key="frame" x="0.0" y="570" width="600" height="30"/>
+                                <color key="backgroundColor" red="0.49803921580314636" green="0.49803921580314636" blue="0.49803921580314636" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="K3k-hX-Yme"/>
+                                </constraints>
+                                <state key="normal" title="Go Back">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doneWithViewController:" destination="dyN-XL-Gj9" eventType="touchUpInside" id="ksw-yI-vNF"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fTa-vh-XWL" firstAttribute="leading" secondItem="VnQ-dQ-JCC" secondAttribute="leading" id="2hr-ka-5cR"/>
+                            <constraint firstItem="ELt-bD-d4S" firstAttribute="top" secondItem="fTa-vh-XWL" secondAttribute="bottom" id="3ab-nZ-7UM"/>
+                            <constraint firstAttribute="trailing" secondItem="sSl-Tr-Wex" secondAttribute="trailing" id="J3u-m2-d5e"/>
+                            <constraint firstItem="fTa-vh-XWL" firstAttribute="top" secondItem="9Du-UC-KQf" secondAttribute="bottom" id="M6N-7x-7yP"/>
+                            <constraint firstItem="sSl-Tr-Wex" firstAttribute="leading" secondItem="VnQ-dQ-JCC" secondAttribute="leading" id="OxG-wJ-gld"/>
+                            <constraint firstItem="ELt-bD-d4S" firstAttribute="top" secondItem="sSl-Tr-Wex" secondAttribute="bottom" id="pUn-iF-elm"/>
+                            <constraint firstItem="sSl-Tr-Wex" firstAttribute="top" secondItem="fTa-vh-XWL" secondAttribute="bottom" id="qcg-Oa-IHq"/>
+                            <constraint firstAttribute="trailing" secondItem="fTa-vh-XWL" secondAttribute="trailing" id="tdW-zz-gj2"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="3ab-nZ-7UM"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="repoWebView" destination="fTa-vh-XWL" id="z2I-G1-CXQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xa6-v8-y0H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="524" y="2133"/>
         </scene>
         <!--Other User View Controller-->
         <scene sceneID="xOl-RM-aHR">
@@ -312,9 +367,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EXQ-CM-pFt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2378" y="1337"/>
+            <point key="canvasLocation" x="1288" y="2133"/>
         </scene>
-        <!--Item-->
+        <!--Search Repositories-->
         <scene sceneID="rip-7l-9KQ">
             <objects>
                 <viewController storyboardIdentifier="SearchForRepos" id="dIZ-zr-ofa" customClass="SearchForRepos" customModule="GoGoGithub" customModuleProvider="target" sceneMemberID="viewController">
@@ -361,6 +416,7 @@
                                         <connections>
                                             <outlet property="subtitleLabel" destination="PjH-OU-fQc" id="N5I-r7-yDT"/>
                                             <outlet property="titleLabel" destination="vV8-JC-ktE" id="T1H-PN-ku1"/>
+                                            <segue destination="dyN-XL-Gj9" kind="presentation" identifier="RepositoryWebView" id="PXP-4y-Bqa"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -384,7 +440,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="3qD-Kg-lmR"/>
+                    <tabBarItem key="tabBarItem" title="Search Repositories" id="3qD-Kg-lmR"/>
                     <connections>
                         <outlet property="searchReposBar" destination="pF6-KG-V1F" id="S2f-Fi-30p"/>
                         <outlet property="tableView" destination="poX-nv-MQn" id="Z58-iY-fxi"/>
@@ -392,7 +448,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eov-Uc-vYp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="776" y="1945"/>
+            <point key="canvasLocation" x="524" y="1337"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
