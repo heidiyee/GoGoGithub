@@ -18,12 +18,23 @@ class UserViewController: UIViewController {
         didSet {
             self.nameLabel.text = user?.name
             self.loginLabel.text = user?.login
+            
+            if let url = NSURL(string: user!.avatar!) {
+                NSOperationQueue().addOperationWithBlock({ () -> Void in
+                    let imageData = NSData(contentsOfURL: url)!
+                    let image = UIImage(data: imageData)
+                    
+                    NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                        self.userImageView.image = image
+                    })
+                })
+            }
         }
     }
     
-    @IBAction func searchUsersButton(sender: UIButton) {
-        self.performSegueWithIdentifier(SearchUserViewController.identifier(), sender: sender)
-    }
+//    @IBAction func searchUsersButton(sender: UIButton) {
+//        self.performSegueWithIdentifier(SearchUserViewController.identifier(), sender: sender)
+//    }
     
     class func identifier() -> String {
         return "UserViewController"
@@ -31,22 +42,13 @@ class UserViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
         self.getUser()
     }
-    
     
     func getUser() {
         GithubService.getUser { (user) -> () in
             self.user = user
         }
     }
-    
-//    func searchUserViewControllerDidFinish() {
-//        self.dismissViewControllerAnimated(true, completion: nil)
-//    }
     
 }

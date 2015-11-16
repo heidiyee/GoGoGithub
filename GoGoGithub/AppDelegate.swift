@@ -45,15 +45,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
         let code = OAuthClient.shared.extractTemporaryCode(url)
-    
+        
         OAuthClient.shared.exchangeForToken(code) { (success) -> () in
             if success {
+                
+                guard let mainViewController = self.loginViewController?.parentViewController as? UserViewController else {return}
+                GithubService.getUser({ (user) -> () in
+                    mainViewController.user = user
+                })
+                
                 
                 UIView.animateWithDuration(0.4, animations: { () -> Void in
                     
                     self.loginViewController!.view.alpha = 0.0
                     }, completion: { (finished) -> Void in
-                        
+                        self.loginViewController?.spinner.stopAnimating()
                         self.loginViewController!.removeFromParentViewController()
                         self.loginViewController = nil
                         
@@ -72,12 +78,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             guard let mainViewController = self.window?.rootViewController as? UITabBarController, storyboard = mainViewController.storyboard else {return}
             guard let authViewController = storyboard.instantiateViewControllerWithIdentifier(LoginViewController.identifier()) as? LoginViewController else {return}
+            guard let firstTab = mainViewController.viewControllers?.first else {return}
             
             self.loginViewController = authViewController
             
-            mainViewController.addChildViewController(authViewController)
-            mainViewController.view.addSubview(authViewController.view)
-            authViewController.didMoveToParentViewController(mainViewController)
+            firstTab.addChildViewController(authViewController)
+            firstTab.view.addSubview(authViewController.view)
+            authViewController.didMoveToParentViewController(firstTab)
+            
         }
         
     }

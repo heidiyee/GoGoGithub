@@ -25,12 +25,13 @@ class CustomTransition: NSObject, UIViewControllerAnimatedTransitioning {
         guard let containerView = transitionContext.containerView() else {return}
         
         let finalFrame = transitionContext.finalFrameForViewController(toViewController)
-        let screenBounds = UIScreen.mainScreen().bounds
+        //let screenBounds = UIScreen.mainScreen().bounds
         
-        toViewController.view.frame = CGRectOffset(finalFrame, 0.0, screenBounds.size.height)
+        toViewController.view.frame = CGRectMake(UIScreen.mainScreen().bounds.width/2, UIScreen.mainScreen().bounds.height/2, 50, 50)
         containerView.addSubview(toViewController.view)
         
-        UIView.animateWithDuration(self.duration, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+        
+        UIView.animateWithDuration(self.duration, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.8, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
             toViewController.view.frame = finalFrame
             }) { (finished) -> Void in
                 transitionContext.completeTransition(true)

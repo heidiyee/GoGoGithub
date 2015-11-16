@@ -17,6 +17,8 @@ class OtherUserViewController: UIViewController {
     var otherUser: User?
     var delegate: OtherUserViewControllerDelegate?
     
+    @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var userLogin: UILabel!
 
     class func identifier() -> String {
         return "OtherUserViewController"
@@ -30,7 +32,17 @@ class OtherUserViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(self.otherUser?.login)
+        self.userLogin.text = self.otherUser?.login
+        if let url = NSURL(string: otherUser!.avatar!) {
+            NSOperationQueue().addOperationWithBlock({ () -> Void in
+                let imageData = NSData(contentsOfURL: url)!
+                let image = UIImage(data: imageData)
+                
+                NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                    self.userImage.image = image
+                })
+            })
+        }
     }
     
 }

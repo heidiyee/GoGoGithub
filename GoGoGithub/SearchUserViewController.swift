@@ -109,12 +109,6 @@ class SearchUserViewController: UIViewController, UICollectionViewDelegate, UICo
         }
     }
     
-//    @IBAction func doneWithViewController(sender: UIStoryboardSegue) {
-//        if let delegate = self.delegate {
-//            delegate.searchUserViewControllerDidFinish()
-//        }
-//    }
-    
     func otherViewControllerDidFinish() {
         self.dismissViewControllerAnimated(true, completion: nil)
     }

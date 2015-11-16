@@ -10,6 +10,8 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
     class func identifier() -> String {
         return "LoginViewController"
     }
@@ -17,6 +19,7 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "femalecoder.png")!)
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -28,8 +31,7 @@ class LoginViewController: UIViewController {
 
     @IBAction func loginButtonPressed(sender: UIButton) {
         OAuthClient.shared.requestGithubAccess(["scope" : "user,repo"])
-        //print(OAuthClient.shared.accessToken())
-
+        spinner.startAnimating()
     }
 
 }
