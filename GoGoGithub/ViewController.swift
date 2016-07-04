@@ -23,7 +23,20 @@ class ViewController: UIViewController {
     }
 
     @IBAction func loginButtonPressed(sender: UIButton) {
+        OAuthClient.shared.requestGithubAccess(["scope" : "user, user:email"])
     }
 
+    @IBAction func printToken(sender: UIButton) {
+        let token = OAuthClient.shared.accessToken()
+        print(token)
+
+    }
+    @IBAction func getRepos(sender: UIButton) {
+        GithubService.getReposWithSearch { (data) -> Void in
+            if let data = data {
+                print(data)
+            }
+        }
+    }
 }
 
