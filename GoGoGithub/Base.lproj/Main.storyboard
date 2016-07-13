@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="hcI-4E-3ae">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="GoGoGithub" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="GoGoGithub" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -24,16 +24,75 @@
                                     <action selector="loginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Q6b-gI-GT1"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sO1-HP-kz5">
+                                <rect key="frame" x="261" y="365" width="78" height="30"/>
+                                <state key="normal" title="Print Token"/>
+                                <connections>
+                                    <action selector="printToken:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XqY-Vb-GOe"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="c6y-ic-JoK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="T20-BG-f4b"/>
                             <constraint firstItem="c6y-ic-JoK" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Ve8-0C-mrw"/>
+                            <constraint firstItem="sO1-HP-kz5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="e24-Xy-6TA"/>
+                            <constraint firstItem="sO1-HP-kz5" firstAttribute="top" secondItem="c6y-ic-JoK" secondAttribute="bottom" constant="50" id="sF4-fv-58w"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="672" y="558"/>
+        </scene>
+        <!--After Login View Controller-->
+        <scene sceneID="VkA-pE-xpl">
+            <objects>
+                <viewController storyboardIdentifier="AfterLoginViewController" id="hcI-4E-3ae" customClass="AfterLoginViewController" customModule="GoGoGithub" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kOR-8s-6f7"/>
+                        <viewControllerLayoutGuide type="bottom" id="TS7-cS-tVV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZGe-do-VgS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Re1-P3-pmn">
+                                <rect key="frame" x="272" y="285" width="57" height="30"/>
+                                <state key="normal" title="get user"/>
+                                <connections>
+                                    <action selector="getReposWithSearchOption:" destination="hcI-4E-3ae" eventType="touchUpInside" id="PVD-gi-UK0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K2C-tj-28Y">
+                                <rect key="frame" x="267" y="359" width="66" height="30"/>
+                                <state key="normal" title="post repo"/>
+                                <connections>
+                                    <action selector="postRepo:" destination="hcI-4E-3ae" eventType="touchUpInside" id="50x-oj-jPF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="grm-Zi-xJ5">
+                                <rect key="frame" x="259" y="429" width="82" height="30"/>
+                                <state key="normal" title="repo search"/>
+                                <connections>
+                                    <action selector="searchRepo:" destination="hcI-4E-3ae" eventType="touchUpInside" id="I0A-wg-36N"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="K2C-tj-28Y" firstAttribute="centerX" secondItem="ZGe-do-VgS" secondAttribute="centerX" id="6oo-4f-Pz4"/>
+                            <constraint firstItem="grm-Zi-xJ5" firstAttribute="centerX" secondItem="ZGe-do-VgS" secondAttribute="centerX" id="Ag3-7G-2l7"/>
+                            <constraint firstItem="grm-Zi-xJ5" firstAttribute="top" secondItem="K2C-tj-28Y" secondAttribute="bottom" constant="40" id="TTe-k5-d1M"/>
+                            <constraint firstItem="Re1-P3-pmn" firstAttribute="centerX" secondItem="ZGe-do-VgS" secondAttribute="centerX" id="o09-ZX-Knh"/>
+                            <constraint firstItem="Re1-P3-pmn" firstAttribute="centerY" secondItem="ZGe-do-VgS" secondAttribute="centerY" id="sJC-GV-JbV"/>
+                            <constraint firstItem="K2C-tj-28Y" firstAttribute="top" secondItem="Re1-P3-pmn" secondAttribute="bottom" constant="44" id="vHj-S9-mal"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5up-cn-8hb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-36" y="558"/>
         </scene>
     </scenes>
 </document>
