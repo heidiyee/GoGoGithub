@@ -8,8 +8,11 @@
 
 import UIKit
 
-
-class ViewController: UIViewController {
+class LoginViewController: UIViewController {
+    
+    class func identifier() -> String {
+        return "LoginViewController"
+    }
 
 
     override func viewDidLoad() {
@@ -21,8 +24,12 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
 
     @IBAction func loginButtonPressed(sender: UIButton) {
+        OAuthClient.shared.requestGithubAccess(["scope" : "user,repo"])
+        //print(OAuthClient.shared.accessToken())
+
     }
 
 }
